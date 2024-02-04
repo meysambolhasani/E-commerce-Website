@@ -40,8 +40,16 @@ class UserChangeForm(forms.ModelForm):
     disabled password hash display field.
     """
 
-    password = ReadOnlyPasswordHashField(help_text="you can change password using <a href=\"../password/\">this form</a>.")
+    password = ReadOnlyPasswordHashField(
+        help_text="you can change password using <a href=\"../password/\">this form</a>.")
 
     class Meta:
         model = User
         fields = ['phone', 'email', 'full_name', 'password', 'last_login']
+
+
+class UserRegistrationForm(forms.Form):
+    phone = forms.CharField(max_length=10)
+    email = forms.EmailField(max_length=255)
+    full_name = forms.CharField(max_length=255)
+    password = forms.CharField(widget=forms.PasswordInput)
