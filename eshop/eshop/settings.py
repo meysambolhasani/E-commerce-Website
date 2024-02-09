@@ -32,7 +32,9 @@ LOCAL_APPS = [
     'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig',
 ]
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    'storages',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -108,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-#TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
 IME_ZONE = 'Canada/Eastern'
 
 USE_I18N = True
@@ -128,6 +130,20 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Amazon cloud storage
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            'AWS_S3_ACCESS_KEY_ID': '',
+            'AWS_SECRET_ACCESS_KEY': '',
+            'AWS_S3_ENDPOINT_URL': '',
+            'AWS_STORAGE_BUCKET_NAME': '',
+            'AWS_SERVICE_NAME': '',
+            'AWS_S3_FILE_OVERWRITE': False,
+        },
+    },
+}
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
